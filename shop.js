@@ -120,7 +120,7 @@ class Product {
                         </div>
                         
                         <div class="popup-actions">
-                            <a href="https://wa.me/6282339807811?text=Hi, I want to order: ${encodeURIComponent(this.name)}" 
+                            <a href="#" 
                                target="_blank" 
                                class="whatsapp-order-btn">
                                 <i class="whatsapp-icon">📱</i> Order via WhatsApp
