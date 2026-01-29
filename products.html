@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>SPARKLE SHOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>SPARKLE SHOP</title>
+</head>
+
+<body>
+    <div id="popup-container"></div>
+
+    <div class="top-bar"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <!-- Desktop Header (shown on larger screens) -->
+            <div class="header-container desktop-header">
+                <div class="header-nav">
+                    <a href="#" class="nav-link" id="prev-category">Back</a>
+                </div>
+                <div class="header-nav">
+                    <!-- Empty for spacing -->
+                </div>
+                <div class="logo-container">
+                    <a href="index.html" class="logo">
+                        <img src="Logo-main.png" alt="Sparkle Logo" class="logo-img">
+                    </a>
+                </div>
+                <div class="header-nav">
+                    <!-- Empty for spacing -->
+                </div>
+                <div class="header-nav">
+                    <a href="#" class="nav-link" id="next-category">Next Collection</a>
+                </div>
+            </div>
+
+            <!-- Mobile Header (shown on smaller screens) -->
+            <div class="mobile-header">
+                <button class="hamburger-menu" id="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="mobile-logo">
+                    <img src="Logo-main.png" alt="Sparkle Logo" class="logo-img">
+                </a>
+                <div class="mobile-header-icons">
+                    <a href="#contact" class="nav-link">
+                        <i class="fas fa-phone header-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-close" id="mobile-nav-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html"><i class="fas "></i> Home</a></li>
+            <li><a href="category.html"><i class="fas "></i> Category</a></li>
+            <li><a href="#"><i class="fas "></i> Women's Collection</a></li>
+            <li><a href="#"><i class="fas "></i> Men's Collection</a></li>
+            <li><a href="#"><i class="fas "></i> Active Wear</a></li>
+            <li><a href="#"><i class="fas "></i> Accessories</a></li>
+            <li><a href="products.html"><i class="fas "></i> All Products</a></li>
+            <li><a href="#contact"><i class="fas fa-phone"></i> Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Shop item Section -->
+    <section class="shopcon">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="page-title">All Products</h2>
+                <a href="index.html"><button id="sort-button">Back to Main Menu</button></a>
+            </div>
+            <div id="category-filter-container" class="category-filter-container"></div>
+            <div id="shop-container" class="shop-container"></div>
+        </div>
+    </section>
+
+    <!-- Shop Category Section -->
+    <section class="shop-category-index" id="shop">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shop by Category</h2>
+            </div>
+            <div class="section-title">
+                <h3>Category for Man</h3>
+            </div>
+            <div class="bento-grid">
+                <div class="category-item">
+                    <a href="products.html?category=Man Casual">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="CASUAL" class="category-img">
+                        <div class="category-text">
+                            <h3>CASUAL</h3>
+                            <!--add <P> to detail-->
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Man Swimming Wear">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="SWIMING WEAR" class="category-img">
+                        <div class="category-text">
+                            <h3>SWIMING WEAR</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Man Sportswear">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="sportwear" class="category-img">
+                        <div class="category-text">
+                            <h3>sportwear</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Man Bags">
+                        <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Bags" class="category-img">
+                        <div class="category-text">
+                            <h3>Bags</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Man Accessories">
+                        <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="accessories" class="category-img">
+                        <div class="category-text">
+                            <h3>accessories</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h3>Category for Woman</h3>
+            </div>
+
+            <div class="bento-grid">
+                <div class="category-item">
+                    <a href="products.html?category=Woman Casual">
+                        <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Casual" class="category-img">
+                        <div class="category-text">
+                            <h3>Casual</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Woman Swimming Wear">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Swimming wear" class="category-img">
+                        <div class="category-text">
+                            <h3>Swimming wear</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Woman Sportswear">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Sportwear" class="category-img">
+                        <div class="category-text">
+                            <h3>Sportwear</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Woman Bags">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Bags" class="category-img">
+                        <div class="category-text">
+                            <h3>Bags</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Woman Accessories">
+                        <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="accessories" class="category-img">
+                        <div class="category-text">
+                            <h3>accessories</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <span class="bg-text2 ">SPARKLE</span>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title invert line">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="section-title section-title-center">
+                    <h2>Visit Our Store</h2>
+                </div>
+                <div class="contact-maps">
+                    <div class="map-item">
+                        <img src="/img/cson/1.jpg" alt="Contact Us" class="contact-img">
+                        <div class="map-description">
+                            <h4>New York Flagship Store</h4>
+                            <p>Our main location in the heart of Manhattan</p>
+                        </div>
+                    </div>
+                    <div class="map-item">
+                        <img src="/img/cson/2.jpg" alt="Contact Us" class="contact-img">
+                        <div class="map-description">
+                            <h4>Los Angeles Boutique</h4>
+                            <p>West coast luxury fashion destination</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Facebook</h4>
+                            <p>Sparkle Shop</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Instagram</h4>
+                            <p>@SparkleShop<br>Follow us for latest trends</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>+1 (555) 123-4567<br>Chat to order our products</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <!-- 4 text menu inline -->
+            <div class="footer-menu">
+                <a href="index.html#about-us-title" class="menu-item">About Us</a>
+                <a href="index.html#highlight" class="menu-item">Highlight</a>
+                <a href="index.html#shop" class="menu-item">Category</a>
+                <a href="#contact" class="menu-item">Contact</a>
+            </div>
+            <div class="copyright">
+                <p>Copyright &copy; SPARKLE SHOP</p>
+            </div>
+        </div>
+        <span class="bg-text3 ">SPARKLE</span>
+    </footer>
+
+    <!-- Popup Container (will be created by JavaScript) -->
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="shop.js"></script>
+    <script>
+        // Mobile menu functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavClose = document.getElementById('mobile-nav-close');
+        const overlay = document.getElementById('overlay');
+
+        // Open mobile menu
+        hamburgerMenu.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileNavClose.addEventListener('click', closeMobileMenu);
+        overlay.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Swiper initialization
+        const swiper = new Swiper('.swiper', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            slidesPerView: 'auto',
+            loop: true,
+            spaceBetween: 20,
+            centeredSlides: false,
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 15,
+                    centeredSlides: true,
+                },
+                480: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                    centeredSlides: false,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                }
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+</body>
+
+</html>

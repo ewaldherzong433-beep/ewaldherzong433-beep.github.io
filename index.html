@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>SPARKLE SHOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <div class="top-bar">
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <!-- Desktop Header (shown on larger screens) -->
+            <div class="header-container desktop-header">
+                <div class="header-nav">
+                    <a href="index.html#about-us-title" class="nav-link">About Us</a>
+                </div>
+                <div class="header-nav">
+                    <a href="index.html#highlight" class="nav-link">Highlight</a>
+                </div>
+                <div class="logo-container">
+                    <a href="index.html" class="logo">
+                        <img src="Logo-main.png" alt="Sparkle Logo" class="logo-img">
+                    </a>
+                </div>
+                <div class="header-nav">
+                    <a href="index.html#shop" class="nav-link">Category</a>
+                </div>
+                <!--
+                <div class="header-icons">
+                    <i class="fas fa-search header-icon"></i>
+                    <i class="fas fa-shopping-bag header-icon"></i>
+                    <i class="fas fa-user header-icon"></i>
+                </div>
+                -->
+                <div class="header-nav">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+
+            <!-- Mobile Header (shown on smaller screens) -->
+            <div class="mobile-header">
+                <button class="hamburger-menu" id="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="mobile-logo">
+                    <img src="Logo-main.png" alt="Sparkle Logo" class="logo-img">
+                </a>
+                <div class="mobile-header-icons">
+                    <a href="#contact" class="nav-link">
+                        <i class="fas fa-phone header-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-close" id="mobile-nav-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html"><i class="fas "></i> Home</a></li>
+            <li><a href="category.html"><i class="fas "></i> Category</a></li>
+            <li><a href="#"><i class="fas "></i> Women's Collection</a></li>
+            <li><a href="#"><i class="fas "></i> Men's Collection</a></li>
+            <li><a href="#"><i class="fas "></i> Active Wear</a></li>
+            <li><a href="#"><i class="fas "></i> Accessories</a></li>
+            <li><a href="products.html"><i class="fas "></i> All Products</a></li>
+            <li><a href="#contact"><i class="fas fa-phone"></i> Contact Us</a></li>
+        </ul>
+    </div>
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" id="overlay"></div>
+
+
+    <!-- Hero Section with 3 texts and 1 button -->
+    <section class="hero" id="slideshow">
+        <div class="container squish-container">
+            <img src="Logo-main white.png" alt="Sparkle Logo" class="hero-logo">
+        </div>
+        <script>
+            const images = [
+                'https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+                'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+            ];
+            let currentIndex = 0;
+
+            function changeBackground() {
+                document.getElementById("slideshow").style.backgroundImage = `url(${images[currentIndex]})`;
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+
+            // Change image every 5 seconds
+            setInterval(changeBackground, 2000);
+
+            // Set initial image
+            window.onload = changeBackground;
+        </script>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us" id="about-us-section">
+        <div class="container squish-container" id="about-us">
+            <div class="section-title line" id="about-us-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <p>Our store curates the latest casual, sport, swimwear, and branded<br>
+                    accessories with premium quality
+                    and meticulous attention to detail.<br>
+                    So you can enjoy iconic looks without unnecessary markups.<br>
+                    Designed for everyday confidence and modern lifestyles, focus on<br>
+                    delivering fashion that looks refined, feels right, and fits your rhythm.</p>
+            </div>
+        </div>
+
+        <span class="bg-text ">SPARKLE</span>
+        <img src="blackSpiral.png" alt="SPARKLE" class="bg-logo mhidd">
+    </section>
+
+
+    <!-- Highlight Section with Card Swiper -->
+    <section class="highlight line" id="highlight">
+        <div class="container">
+
+            <div class="section-title invert">
+                <h2>Highlight</h2>
+            </div>
+
+            <!-- Swiper Slider -->
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- Card 1 -->
+                    <div class="swiper-slide">
+                        <div class="trending-card">
+                            <div class="card-img-container">
+                                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                                    alt="Casual Wear" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Casual Comfort</h3>
+                                <p class="card-description">Relaxed-fit cotton t-shirt perfect for everyday wear. Made
+                                    from 100% organic cotton for maximum comfort.</p>
+                                <div class="card-price">Rp 450.000</div>
+                            </div>
+                            <div class="card-tag">NEW</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="swiper-slide">
+                        <div class="trending-card">
+                            <div class="card-img-container">
+                                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                                    alt="Formal Attire" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Elegant Suit</h3>
+                                <p class="card-description">Premium wool blend suit with tailored fit. Perfect for
+                                    business meetings and formal occasions.</p>
+                                <div class="card-price">Rp 3.000.000</div>
+
+                            </div>
+                            <div class="card-tag">BEST SELLER</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="swiper-slide">
+                        <div class="trending-card">
+                            <div class="card-img-container">
+                                <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                                    alt="Active Wear" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Performance Jacket</h3>
+                                <p class="card-description">Lightweight waterproof jacket with moisture-wicking
+                                    technology. Ideal for outdoor activities.</p>
+                                <div class="card-price">Rp 1.350.000</div>
+
+                            </div>
+                            <div class="card-tag">SALE</div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="trending-card">
+                            <div class="card-img-container">
+                                <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                                    alt="Active Wear" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Performance Jacket</h3>
+                                <p class="card-description">Lightweight waterproof jacket with moisture-wicking
+                                    technology. Ideal for outdoor activities.</p>
+                                <div class="card-price">Rp 1.350.000</div>
+
+                            </div>
+                            <div class="card-tag">SALE</div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="trending-card">
+                            <div class="card-img-container">
+                                <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                                    alt="Active Wear" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Performance Jacket</h3>
+                                <p class="card-description">Lightweight waterproof jacket with moisture-wicking
+                                    technology. Ideal for outdoor activities.</p>
+                                <div class="card-price">Rp 1.350.000</div>
+
+                            </div>
+                            <div class="card-tag">SALE</div>
+                        </div>
+                    </div>
+
+
+                    <div class="swiper-slide">
+                        <div class="trending-card">
+                            <div class="card-img-container">
+                                <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                                    alt="Active Wear" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Performance Jacket</h3>
+                                <p class="card-description">Lightweight waterproof jacket with moisture-wicking
+                                    technology. Ideal for outdoor activities.</p>
+                                <div class="card-price">Rp 1.350.000</div>
+
+                            </div>
+                            <div class="card-tag">SALE</div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+                <!-- Pagination dots -->
+                <div class="swiper-pagination"></div>
+
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+                <!-- Pagination dots -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- coming soon -->
+    <section class="csoon">
+        <div class="container squish-container">
+            <h1>Coming Soon</h1>
+        </div>
+    </section>
+
+
+    <!-- Shop Category Section with Bento Box Display -->
+    <section class="shop-category-index" id="shop">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shop by Category</h2>
+            </div>
+            <div class="section-title">
+                <h3>Category for Man</h3>
+            </div>
+            <div class="bento-grid">
+                <div class="category-item">
+                    <a href="products.html?category=Man Casual">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="CASUAL" class="category-img">
+                        <div class="category-text">
+                            <h3>CASUAL</h3>
+                            <!--add <P> to detail-->
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Man Swimming Wear">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="SWIMING WEAR" class="category-img">
+                        <div class="category-text">
+                            <h3>SWIMING WEAR</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Man Sportswear">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="sportwear" class="category-img">
+                        <div class="category-text">
+                            <h3>sportwear</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Man Bags">
+                        <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Bags" class="category-img">
+                        <div class="category-text">
+                            <h3>Bags</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Man Accessories">
+                        <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="accessories" class="category-img">
+                        <div class="category-text">
+                            <h3>accessories</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h3>Category for Woman</h3>
+            </div>
+
+            <div class="bento-grid">
+                <div class="category-item">
+                    <a href="products.html?category=Woman Casual">
+                        <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Casual" class="category-img">
+                        <div class="category-text">
+                            <h3>Casual</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Woman Swimming Wear">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Swimming wear" class="category-img">
+                        <div class="category-text">
+                            <h3>Swimming wear</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Woman Sportswear">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Sportwear" class="category-img">
+                        <div class="category-text">
+                            <h3>Sportwear</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Woman Bags">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Bags" class="category-img">
+                        <div class="category-text">
+                            <h3>Bags</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-item">
+                    <a href="products.html?category=Woman Accessories">
+                        <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="accessories" class="category-img">
+                        <div class="category-text">
+                            <h3>accessories</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <span class="bg-text2 ">SPARKLE</span>
+    </section>
+
+
+    <!-- Contact Us Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title invert line">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="section-title section-title-center">
+                    <h2>Visit Our Store</h2>
+                </div>
+                <div class="contact-maps">
+                    <div class="map-item">
+                        <img src="/img/cson/1.jpg" alt="Contact Us" class="contact-img">
+                        <div class="map-description">
+                            <h4>New York Flagship Store</h4>
+                            <p>Our main location in the heart of Manhattan</p>
+                        </div>
+                    </div>
+                    <div class="map-item">
+                        <img src="/img/cson/2.jpg" alt="Contact Us" class="contact-img">
+                        <div class="map-description">
+                            <h4>Los Angeles Boutique</h4>
+                            <p>West coast luxury fashion destination</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Facebook</h4>
+                            <p>Sparkle Shop</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Instagram</h4>
+                            <p>@SparkleShop<br>Follow us for latest trends</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>+1 (555) 123-4567<br>Chat to order our products</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <!-- 4 text menu inline -->
+            <div class="footer-menu">
+                <a href="index.html#about-us-title" class="menu-item">About Us</a>
+                <a href="index.html#highlight" class="menu-item">Highlight</a>
+                <a href="index.html#shop" class="menu-item">Category</a>
+                <a href="#contact" class="menu-item">Contact</a>
+            </div>
+            <div class="copyright">
+                <p>Copyright &copy; SPARKLE SHOP</p>
+            </div>
+        </div>
+        <span class="bg-text3 ">SPARKLE</span>
+    </footer>
+
+    <!-- Event Popup Modal -->
+    <div class="event-popup" id="event-popup">
+        <div class="event-popup-content">
+            <button class="event-popup-close" id="event-popup-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="event-popup-image">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                    alt="Special Event" class="event-img">
+            </div>
+            <div class="event-popup-text">
+                <h2 class="event-title">GRAND OPENING!</h2>
+                <p class="event-description">
+                    Welcome to SPARKLE SHOP! We're thrilled to have you here.
+                    Enjoy <strong>20% OFF</strong> your first purchase with code:
+                    <span class="event-code">SPARKLE20</span>
+                </p>
+                <p class="event-description">
+                    Limited time offer. Shop now and discover our curated collection
+                    of premium fashion and accessories.
+                </p>
+                <div class="event-actions">
+                    <button class="event-btn event-btn-primary" onclick="window.location.href='#shop'">
+                        Shop Now
+                    </button>
+                    <button class="event-btn event-btn-secondary" id="event-popup-close-btn">
+                        Continue Browsing
+                    </button>
+                </div>
+                <div class="event-note">
+                    <small>
+                        <i class="fas fa-exclamation-circle"></i>
+                        This offer expires in 7 days
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Popup Overlay -->
+    <div class="event-popup-overlay" id="event-popup-overlay"></div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+        // Mobile menu functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavClose = document.getElementById('mobile-nav-close');
+        const overlay = document.getElementById('overlay');
+
+        // Open mobile menu
+        hamburgerMenu.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        mobileNavClose.addEventListener('click', closeMobileMenu);
+        overlay.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Swiper initialization
+        const swiper = new Swiper('.swiper', {
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Pagination dots
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Default parameters
+            slidesPerView: 1,
+            loop: true,
+            spaceBetween: 20,
+            centeredSlides: true,
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 15,
+                    centeredSlides: true,
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                    centeredSlides: true,
+                },
+                // when window width is >= 768px
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                    centeredSlides: true,
+                },
+                // when window width is >= 1024px
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    centeredSlides: true,
+                }
+            },
+            // Optional: Enable autoplay
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+        });
+
+        // Event Popup functionality
+        const eventPopup = document.getElementById('event-popup');
+        const eventPopupOverlay = document.getElementById('event-popup-overlay');
+        const eventPopupClose = document.getElementById('event-popup-close');
+        const eventPopupCloseBtn = document.getElementById('event-popup-close-btn');
+
+        // Function to show event popup
+        function showEventPopup() {
+            // Show popup after 1 second delay
+            setTimeout(() => {
+                eventPopup.classList.add('active');
+                eventPopupOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }, 2000);
+        }
+
+        // Function to close event popup
+        function closeEventPopup() {
+            eventPopup.classList.remove('active');
+            eventPopupOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+
+            // Store in localStorage that popup has been shown
+            localStorage.setItem('eventPopupShown', 'true');
+        }
+
+        // Close popup when clicking close button or overlay
+        eventPopupClose.addEventListener('click', closeEventPopup);
+        eventPopupCloseBtn.addEventListener('click', closeEventPopup);
+        eventPopupOverlay.addEventListener('click', closeEventPopup);
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && eventPopup.classList.contains('active')) {
+                closeEventPopup();
+            }
+        });
+
+        // Show popup on page load (check if it hasn't been shown before)
+        window.addEventListener('load', () => {
+            // Check if popup has been shown before (using localStorage)
+            const popupShown = localStorage.getItem('eventPopupShown');
+
+            if (!popupShown) {
+                showEventPopup();
+            }
+        });
+
+        // Optional: Add a function to reset the popup for testing
+        function resetEventPopup() {
+            localStorage.removeItem('eventPopupShown');
+            showEventPopup();
+        }
+        resetEventPopup()
+    </script>
+
+</body>
+
+</html>
