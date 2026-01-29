@@ -377,6 +377,7 @@ header {
     scroll-margin-top: 400px;
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .section-title h2 {
