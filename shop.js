@@ -49,12 +49,16 @@ class Product {
     createHTML() {
         const hasDiscount = this.hasDiscount();
         const discountedPrice = this.calculateDiscountedPrice();
+        const hasMultipleImages = this.hasMultipleImages();
         const mainImage = this.images[0];
 
         return `
             <div class="product-card clickable-product" data-id="${this.id}">
                 ${hasDiscount ? '<div class="discount-badge">-' + this.discount + '%</div>' : ''}
-                <img src="${mainImage}" alt="${this.name}" class="product-image">
+                <div class="product-image-container">
+                    <img src="${mainImage}" alt="${this.name}" class="product-image main-image">
+                    ${hasMultipleImages ? `<img src="${this.images[1]}" alt="${this.name}" class="product-image hover-image">` : ''}
+                </div>
                 <div class="category">${this.category}</div>
                 <h3 class="product-name">${this.name}</h3>                
                 <div class="product-price">
@@ -120,7 +124,7 @@ class Product {
                         </div>
                         
                         <div class="popup-actions">
-                            <a href="#" 
+                            <a href="https://wa.me/123123123?text=Hi, I want to order: ${encodeURIComponent(this.name)} (ID: ${this.id}) - Price: ${this.formatPrice(this.calculateDiscountedPrice())}" 
                                target="_blank" 
                                class="whatsapp-order-btn">
                                 <i class="whatsapp-icon">📱</i> Order via WhatsApp
@@ -149,12 +153,24 @@ class ShopApp {
             document.body.appendChild(this.popupContainer);
         }
 
+        // Define fixed categories in exact order
+        this.fixedCategories = [
+            'Man Casual',
+            'Man Swimming Wear',
+            'Man Sportwear',
+            'Man Bags',
+            'Man Accessories',
+            'Woman Casual',
+            'Woman Swimming Wear',
+            'Woman Sportwear',
+            'Woman Bags',
+            'Woman Accessories'
+        ];
+
         // Check URL parameters for category
         const urlParams = new URLSearchParams(window.location.search);
-        this.currentCategory = urlParams.get('category') || 'all';
-
-        // Store all unique categories
-        this.categories = ['all'];
+        // Set default to first category
+        this.currentCategory = urlParams.get('category') || this.fixedCategories[0];
 
         this.init();
     }
@@ -166,6 +182,12 @@ class ShopApp {
 
             const data = await response.json();
             this.products = data.map(item => {
+                // Filter out products with categories not in fixed list
+                if (!this.fixedCategories.includes(item.category)) {
+                    console.warn(`Product ${item.name} has invalid category: ${item.category}. Skipping.`);
+                    return null;
+                }
+
                 // Handle both old format (single image) and new format (multiple images)
                 const images = item.images || [item.image];
 
@@ -179,11 +201,24 @@ class ShopApp {
                     item.price, // Original price
                     item.discount || 0 // Discount percentage
                 );
-            });
+            }).filter(product => product !== null); // Remove null products
 
-            // Get unique categories from products
-            const productCategories = [...new Set(this.products.map(product => product.category))];
-            this.categories = ['all', ...productCategories];
+            // Verify all products have valid categories
+            const invalidCategories = this.products
+                .filter(p => !this.fixedCategories.includes(p.category))
+                .map(p => p.category);
+            
+            if (invalidCategories.length > 0) {
+                console.warn('Some products have invalid categories:', invalidCategories);
+            }
+
+            // Use fixed categories as the source of truth
+            this.categories = [...this.fixedCategories];
+            
+            // Check if current category is valid
+            if (!this.categories.includes(this.currentCategory)) {
+                this.currentCategory = this.categories[0];
+            }
 
             this.createCategoryFilter();
             return true;
@@ -194,79 +229,46 @@ class ShopApp {
         }
     }
 
-    createDiscountFilter() {
-        const filterHTML = `
-        <div class="discount-filter">
-            <button class="discount-filter-btn" data-filter="all">All Products</button>
-            <button class="discount-filter-btn" data-filter="discounted">On Sale</button>
-            <button class="discount-filter-btn" data-filter="best-deals">Best Deals (>30%)</button>
-        </div>
-    `;
 
-        // Add to your filter container or create a new one
-        document.querySelector('.filters-container').innerHTML += filterHTML;
 
-        // Add event listeners
-        document.querySelectorAll('.discount-filter-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const filter = e.target.dataset.filter;
-                this.filterByDiscount(filter);
-            });
-        });
-    }
-
-    filterByDiscount(filterType) {
-        let filteredProducts = this.products;
-
-        if (this.currentCategory !== 'all') {
-            filteredProducts = filteredProducts.filter(product => product.category === this.currentCategory);
+    updateURL() {
+        const url = new URL(window.location);
+        if (this.currentCategory) {
+            url.searchParams.set('category', this.currentCategory);
         }
-
-        switch (filterType) {
-            case 'discounted':
-                filteredProducts = filteredProducts.filter(product => product.hasDiscount());
-                break;
-            case 'best-deals':
-                filteredProducts = filteredProducts.filter(product => product.discount >= 30);
-                break;
-            case 'all':
-            default:
-                // Show all
-                break;
-        }
-
-        this.displayFilteredProducts(filteredProducts);
-    }
-
-    createCategoryFilter() {
-        const filterHTML = `
-            <div class="category-filter">
-                <label for="category-select">Filter by Category:</label>
-                <select id="category-select">
-                    ${this.categories.map(category => `<option value="${category}">${category === 'all' ? 'All Categories' : category}</option>`).join('')}
-                </select>
-            </div>
-        `;
-
-        this.filterContainer.innerHTML = filterHTML;
-
-        // Add event listener
-        document.getElementById('category-select').addEventListener('change', (e) => {
-            this.currentCategory = e.target.value;
-            this.displayProducts();
-            this.updatePageTitle();
-        });
-
-        // Set the initial selected value
-        document.getElementById('category-select').value = this.currentCategory;
+        window.history.pushState({}, '', url);
     }
 
     updatePageTitle() {
-        if (this.pageTitle) {
-            if (this.currentCategory === 'all') {
-                this.pageTitle.textContent = 'All Products';
+        if (this.pageTitle && this.currentCategory) {
+            this.pageTitle.textContent = this.currentCategory;
+        }
+    }
+
+    // NEW METHOD: Update navigation links based on current category
+    updateNavigationLinks() {
+        const prevBtn = document.getElementById('prev-category');
+        const nextBtn = document.getElementById('next-category');
+
+        if (prevBtn) {
+            // Check if current category is "Man Casual"
+            if (this.currentCategory === 'Man Casual') {
+                prevBtn.textContent = 'Home';
+                prevBtn.href = 'index.html';
             } else {
-                this.pageTitle.textContent = this.currentCategory;
+                prevBtn.textContent = 'Back';
+                prevBtn.href = '#'; // Reset to default
+            }
+        }
+
+        if (nextBtn) {
+            // Check if current category is "Woman Accessories"
+            if (this.currentCategory === 'Woman Accessories') {
+                nextBtn.textContent = 'Home';
+                nextBtn.href = 'index.html';
+            } else {
+                nextBtn.textContent = 'Next Collection';
+                nextBtn.href = '#'; // Reset to default
             }
         }
     }
@@ -277,11 +279,13 @@ class ShopApp {
         const currentIndex = this.categories.indexOf(this.currentCategory);
         let prevIndex = currentIndex - 1;
 
-        // If we're at the first category, loop to the last
-        if (prevIndex < 0) {
-            prevIndex = this.categories.length - 1;
+        // If we're at the first category (Man Casual), go to index.html
+        if (currentIndex === 0) {
+            window.location.href = 'index.html';
+            return;
         }
 
+        // If we're not at the first category, go to previous category
         this.currentCategory = this.categories[prevIndex];
         this.updateCategoryNavigation();
     }
@@ -292,11 +296,13 @@ class ShopApp {
         const currentIndex = this.categories.indexOf(this.currentCategory);
         let nextIndex = currentIndex + 1;
 
-        // If we're at the last category, loop back to the first
-        if (nextIndex >= this.categories.length) {
-            nextIndex = 0;
+        // If we're at the last category (Woman Accessories), go to index.html
+        if (currentIndex === this.categories.length - 1) {
+            window.location.href = 'index.html';
+            return;
         }
 
+        // If we're not at the last category, go to next category
         this.currentCategory = this.categories[nextIndex];
         this.updateCategoryNavigation();
     }
@@ -307,14 +313,11 @@ class ShopApp {
             document.getElementById('category-select').value = this.currentCategory;
         }
 
-        // Update URL parameter without page reload
-        const url = new URL(window.location);
-        if (this.currentCategory === 'all') {
-            url.searchParams.delete('category');
-        } else {
-            url.searchParams.set('category', this.currentCategory);
-        }
-        window.history.pushState({}, '', url);
+        // Update URL
+        this.updateURL();
+
+        // Update navigation links
+        this.updateNavigationLinks();
 
         this.displayProducts();
         this.updatePageTitle();
@@ -356,14 +359,16 @@ class ShopApp {
     }
 
     displayProducts() {
-        let filteredProducts = this.products;
-
-        if (this.currentCategory !== 'all') {
-            filteredProducts = this.products.filter(product => product.category === this.currentCategory);
-        }
+        // Filter by current category
+        const filteredProducts = this.products.filter(product => product.category === this.currentCategory);
 
         if (filteredProducts.length === 0) {
-            this.container.innerHTML = '<p class="no-products">No products available in this category</p>';
+            this.container.innerHTML = `
+                <div class="no-products">
+                    <p>No products available in the "${this.currentCategory}" category</p>
+                    <p class="category-hint">Select another category from the dropdown above</p>
+                </div>
+            `;
             return;
         }
 
@@ -373,6 +378,29 @@ class ShopApp {
             .join('');
 
         this.addEventListeners();
+        this.addImageHoverEffects();
+    }
+
+    addImageHoverEffects() {
+        // Add hover effect only to product cards that have hover images
+        const productCards = this.container.querySelectorAll('.product-card');
+
+        productCards.forEach(card => {
+            const hoverImage = card.querySelector('.hover-image');
+            if (hoverImage) {
+                const mainImage = card.querySelector('.main-image');
+
+                card.addEventListener('mouseenter', () => {
+                    mainImage.style.opacity = '0';
+                    hoverImage.style.opacity = '1';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    mainImage.style.opacity = '1';
+                    hoverImage.style.opacity = '0';
+                });
+            }
+        });
     }
 
     showProductPopup(productId) {
@@ -513,6 +541,7 @@ class ShopApp {
         this.displayProducts();
         this.updatePageTitle();
         this.setupNavigationListeners();
+        this.updateNavigationLinks(); // Call this after initialization
     }
 }
 
