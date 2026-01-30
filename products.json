@@ -24,38 +24,229 @@
     ],
     "discount": 0
   },
-  
-  {
+    {
     "id": 3,
-    "name": "Classic Leather Watch",
-    "price": 250000,
-    "description": "Elegant leather watch with stainless steel case. Water resistant up to 50 meters.",
-    "category": "Fashion",
+    "name": "baju casual 1 test 4 foto diskon 15%",
+    "price": 450000,
+    "description": "asd1",
+    "category": "Man Swimming Wear",
     "images": [
-      "watch-1.jpg",
-      "watch-2.jpg"
+      "/img/cson/1.jpg",
+      "/img/cson/2.jpg",
+      "/img/cson/3.jpg",
+      "/img/cson/4.jpg"
     ],
-    "discount": 10
+    "discount": 15
   },
   {
     "id": 4,
-    "name": "Organic Coffee Beans",
-    "price": 85000,
-    "description": "100% organic Arabica coffee beans. Medium roast with chocolate and nutty notes.",
-    "category": "Food & Beverage",
-    "image": "coffee.jpg"
+    "name": "baju casual 1 test 2 foto no diskon",
+    "price": 450000,
+    "description": "asd2",
+    "category": "Man Swimming Wear",
+    "images": [
+      "/img/cson/2.jpg"
+    ],
+    "discount": 0
+  },
+      {
+    "id": 5,
+    "name": "baju casual 1 test 4 foto diskon 15%",
+    "price": 450000,
+    "description": "asd1",
+    "category": "Man Sportwear",
+    "images": [
+      "/img/cson/1.jpg",
+      "/img/cson/2.jpg",
+      "/img/cson/3.jpg",
+      "/img/cson/4.jpg"
+    ],
+    "discount": 15
   },
   {
-    "id": 5,
-    "name": "Sports Running Shoes",
-    "price": 320000,
-    "description": "Lightweight running shoes with advanced cushioning technology. Perfect for athletes.",
-    "category": "Sportswear",
+    "id": 6,
+    "name": "baju casual 1 test 2 foto no diskon",
+    "price": 450000,
+    "description": "asd2",
+    "category": "Man Sportwear",
     "images": [
-      "shoes-1.jpg",
-      "shoes-2.jpg",
-      "shoes-3.jpg"
+      "/img/cson/2.jpg"
     ],
-    "discount": 20
+    "discount": 0
+  },
+      {
+    "id": 7,
+    "name": "baju casual 1 test 4 foto diskon 15%",
+    "price": 450000,
+    "description": "asd1",
+    "category": "Man Bags",
+    "images": [
+      "/img/cson/1.jpg",
+      "/img/cson/2.jpg",
+      "/img/cson/3.jpg",
+      "/img/cson/4.jpg"
+    ],
+    "discount": 15
+  },
+  {
+    "id": 8,
+    "name": "baju casual 1 test 2 foto no diskon",
+    "price": 450000,
+    "description": "asd2",
+    "category": "Man Bags",
+    "images": [
+      "/img/cson/2.jpg"
+    ],
+    "discount": 0
+  },
+      {
+    "id": 9,
+    "name": "baju casual 1 test 4 foto diskon 15%",
+    "price": 450000,
+    "description": "asd1",
+    "category": "Man Accessories",
+    "images": [
+      "/img/cson/1.jpg",
+      "/img/cson/2.jpg",
+      "/img/cson/3.jpg",
+      "/img/cson/4.jpg"
+    ],
+    "discount": 15
+  },
+  {
+    "id": 10,
+    "name": "baju casual 1 test 2 foto no diskon",
+    "price": 450000,
+    "description": "asd2",
+    "category": "Man Accessories",
+    "images": [
+      "/img/cson/2.jpg"
+    ],
+    "discount": 0
+  },
+  {
+    "id": 1,
+    "name": "baju casual 1 test 4 foto diskon 15%",
+    "price": 450000,
+    "description": "asd1",
+    "category": "Woman Casual",
+    "images": [
+      "/img/cson/1.jpg",
+      "/img/cson/2.jpg",
+      "/img/cson/3.jpg",
+      "/img/cson/4.jpg"
+    ],
+    "discount": 15
+  },
+  {
+    "id": 2,
+    "name": "baju casual 1 test 2 foto no diskon",
+    "price": 450000,
+    "description": "asd2",
+    "category": "Woman Casual",
+    "images": [
+      "/img/cson/2.jpg"
+    ],
+    "discount": 0
+  },
+    {
+    "id": 3,
+    "name": "baju casual 1 test 4 foto diskon 15%",
+    "price": 450000,
+    "description": "asd1",
+    "category": "Woman Swimming Wear",
+    "images": [
+      "/img/cson/1.jpg",
+      "/img/cson/2.jpg",
+      "/img/cson/3.jpg",
+      "/img/cson/4.jpg"
+    ],
+    "discount": 15
+  },
+  {
+    "id": 4,
+    "name": "baju casual 1 test 2 foto no diskon",
+    "price": 450000,
+    "description": "asd2",
+    "category": "Woman Swimming Wear",
+    "images": [
+      "/img/cson/2.jpg"
+    ],
+    "discount": 0
+  },
+      {
+    "id": 5,
+    "name": "baju casual 1 test 4 foto diskon 15%",
+    "price": 450000,
+    "description": "asd1",
+    "category": "Woman Sportwear",
+    "images": [
+      "/img/cson/1.jpg",
+      "/img/cson/2.jpg",
+      "/img/cson/3.jpg",
+      "/img/cson/4.jpg"
+    ],
+    "discount": 15
+  },
+  {
+    "id": 6,
+    "name": "baju casual 1 test 2 foto no diskon",
+    "price": 450000,
+    "description": "asd2",
+    "category": "Woman Sportwear",
+    "images": [
+      "/img/cson/2.jpg"
+    ],
+    "discount": 0
+  },
+      {
+    "id": 7,
+    "name": "baju casual 1 test 4 foto diskon 15%",
+    "price": 450000,
+    "description": "asd1",
+    "category": "Woman Bags",
+    "images": [
+      "/img/cson/1.jpg",
+      "/img/cson/2.jpg",
+      "/img/cson/3.jpg",
+      "/img/cson/4.jpg"
+    ],
+    "discount": 15
+  },
+  {
+    "id": 8,
+    "name": "baju casual 1 test 2 foto no diskon",
+    "price": 450000,
+    "description": "asd2",
+    "category": "Woman Bags",
+    "images": [
+      "/img/cson/2.jpg"
+    ],
+    "discount": 0
+  },
+      {
+    "id": 9,
+    "name": "baju casual 1 test 4 foto diskon 15%",
+    "price": 450000,
+    "description": "asd1",
+    "category": "Woman Accessories",
+    "images": [
+      "/img/cson/1.jpg",
+      "/img/cson/2.jpg",
+      "/img/cson/3.jpg",
+      "/img/cson/4.jpg"
+    ],
+    "discount": 15
+  },
+  {
+    "id": 10,
+    "name": "baju casual 1 test 2 foto no diskon",
+    "price": 450000,
+    "description": "asd2",
+    "category": "Woman Accessories",
+    "images": [
+      "/img/cson/2.jpg"
+    ],
+    "discount": 0
   }
 ]
