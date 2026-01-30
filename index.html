@@ -18,10 +18,6 @@
 </head>
 
 <body>
-
-    <div class="top-bar">
-    </div>
-
     <!-- Header -->
     <header>
         <div class="container">
@@ -93,26 +89,43 @@
     <!-- Hero Section with 3 texts and 1 button -->
     <section class="hero" id="slideshow">
         <div class="container squish-container">
-            <img src="Logo-main white.png" alt="Sparkle Logo" class="hero-logo">
+            <img src="/img/ASSET/LOGOWHITE.png" alt="Sparkle Logo" class="hero-logo">
         </div>
         <script>
             const images = [
-                'https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
-                'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-                'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+                'img/ASSET/proframe08.webp',
+                'img/ASSET/proframe09.webp',
+                'img/ASSET/proframe10.webp',
+                'img/ASSET/proframe11.webp',
+                'img/ASSET/proframe12.webp',
             ];
             let currentIndex = 0;
+            const hero = document.getElementById("slideshow");
+
+            // Preload images for smoother transitions
+            const preloadedImages = [];
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+                preloadedImages.push(img);
+            });
 
             function changeBackground() {
-                document.getElementById("slideshow").style.backgroundImage = `url(${images[currentIndex]})`;
-                currentIndex = (currentIndex + 1) % images.length;
+                hero.style.backgroundImage = `url(${images[currentIndex]})`;
+                hero.style.opacity = 0; // Fade out
+
+                setTimeout(() => {
+                    hero.style.opacity = 1; // Fade in
+                    currentIndex = (currentIndex + 1) % images.length;
+                }, 100);
             }
 
-            // Change image every 5 seconds
-            setInterval(changeBackground, 2000);
-
             // Set initial image
-            window.onload = changeBackground;
+            window.onload = () => {
+                hero.style.backgroundImage = `url(${images[0]})`;
+                hero.style.transition = 'background-image 1s ease-in-out, opacity 1s ease-in-out';
+                setTimeout(() => setInterval(changeBackground, 3000), 1000);
+            };
         </script>
     </section>
 
@@ -406,14 +419,14 @@
                 </div>
                 <div class="contact-maps">
                     <div class="map-item">
-                        <img src="/img/cson/1.jpg" alt="Contact Us" class="contact-img">
+                        <img src="/img/ASSET/map1.webp" alt="Contact Us" class="contact-img">
                         <div class="map-description">
                             <h4>New York Flagship Store</h4>
                             <p>Our main location in the heart of Manhattan</p>
                         </div>
                     </div>
                     <div class="map-item">
-                        <img src="/img/cson/2.jpg" alt="Contact Us" class="contact-img">
+                        <img src="/img/ASSET/map2.webp" alt="Contact Us" class="contact-img">
                         <div class="map-description">
                             <h4>Los Angeles Boutique</h4>
                             <p>West coast luxury fashion destination</p>
@@ -480,31 +493,11 @@
                 <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                     alt="Special Event" class="event-img">
             </div>
-            <div class="event-popup-text">
-                <h2 class="event-title">[event name]</h2>
-                <p class="event-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus laoreet nisi in ex pretium dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla ultricies nisi pharetra placerat pharetra.
-                    <span class="event-code">[highlight text]</span>
-                </p>
-                <div class="event-actions">
-                    <button class="event-btn event-btn-primary" onclick="window.location.href='#shop'">
-                        Shop Now
-                    </button>
-                    <button class="event-btn event-btn-secondary" id="event-popup-close-btn">
-                        Continue Browsing
-                    </button>
-                </div>
-                <div class="event-note">
-                    <small>
-                        <i class="fas fa-exclamation-circle"></i>
-                        This offer expires in [time]
-                    </small>
-                </div>
-            </div>
+            <!-- Removed all text content: event-popup-text div -->
         </div>
     </div>
 
-    <!-- Event Popup Overlay -->
+    <!-- Add the overlay back since your CSS references it -->
     <div class="event-popup-overlay" id="event-popup-overlay"></div>
 
     <!-- Swiper JS -->
@@ -598,11 +591,13 @@
             },
         });
 
-        // Event Popup functionality
+        // Get DOM elements
         const eventPopup = document.getElementById('event-popup');
-        const eventPopupOverlay = document.getElementById('event-popup-overlay');
         const eventPopupClose = document.getElementById('event-popup-close');
-        const eventPopupCloseBtn = document.getElementById('event-popup-close-btn');
+        const eventPopupOverlay = document.getElementById('event-popup-overlay'); // Added this
+
+        // Remove the eventPopupCloseBtn reference since we removed that button
+        // const eventPopupCloseBtn = document.getElementById('event-popup-close-btn');
 
         // Function to show event popup
         function showEventPopup() {
@@ -626,7 +621,6 @@
 
         // Close popup when clicking close button or overlay
         eventPopupClose.addEventListener('click', closeEventPopup);
-        eventPopupCloseBtn.addEventListener('click', closeEventPopup);
         eventPopupOverlay.addEventListener('click', closeEventPopup);
 
         // Close popup with Escape key
@@ -636,22 +630,35 @@
             }
         });
 
-        // Show popup on page load (check if it hasn't been shown before)
+        // Function to enable/disable popup
+        function setPopupEnabled(isEnabled) {
+            if (isEnabled) {
+                // Enable popup - will show on page load
+                localStorage.removeItem('eventPopupShown');
+                localStorage.setItem('popupEnabled', 'true');
+                console.log("Popup has been ENABLED");
+            } else {
+                // Disable popup - won't show on page load
+                localStorage.setItem('eventPopupShown', 'true');
+                localStorage.setItem('popupEnabled', 'false');
+                console.log("Popup has been DISABLED");
+            }
+        }
+
+        // Show popup on page load (check if it's enabled AND hasn't been shown before)
         window.addEventListener('load', () => {
-            // Check if popup has been shown before (using localStorage)
+            // Check if popup is enabled AND hasn't been shown before
+            const popupEnabled = localStorage.getItem('popupEnabled') !== 'false';
             const popupShown = localStorage.getItem('eventPopupShown');
 
-            if (!popupShown) {
+            if (popupEnabled && !popupShown) {
                 showEventPopup();
             }
         });
+        //on off pop    up
+        //setPopupEnabled(true);
+        setPopupEnabled(false);
 
-        // Optional: Add a function to reset the popup for testing
-        function resetEventPopup() {
-            localStorage.removeItem('eventPopupShown');
-            showEventPopup();
-        }
-        resetEventPopup()
     </script>
 
 </body>
