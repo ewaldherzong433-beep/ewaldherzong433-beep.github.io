@@ -56,8 +56,8 @@ class Product {
             <div class="product-card clickable-product" data-id="${this.id}">
                 ${hasDiscount ? '<div class="discount-badge">-' + this.discount + '%</div>' : ''}
                 <div class="product-image-container">
-                    <img src="${mainImage}" alt="${this.name}" class="product-image main-image">
-                    ${hasMultipleImages ? `<img src="${this.images[1]}" alt="${this.name}" class="product-image hover-image">` : ''}
+                    <img src="${mainImage}" alt="${this.name}" class="product-image main-image" loading="lazy">
+                    ${hasMultipleImages ? `<img src="${this.images[1]}" alt="${this.name}" class="product-image hover-image" loading="lazy">` : ''}
                 </div>
                 <div class="category">${this.category}</div>
                 <h3 class="product-name">${this.name}</h3>                
@@ -91,18 +91,6 @@ class Product {
                                 <button class="image-nav-btn next-btn">›</button>
                             ` : ''}
                         </div>
-                        
-                        ${hasMultipleImages ? `
-                            <div class="thumbnail-container">
-                                ${this.images.map((image, index) => `
-                                    <img src="${image}" 
-                                         alt="${this.name} - view ${index + 1}" 
-                                         class="thumbnail ${index === 0 ? 'active' : ''}" 
-                                         data-index="${index}"
-                                         data-id="${this.id}">
-                                `).join('')}
-                            </div>
-                        ` : ''}
                     </div>
                     
                     <div class="popup-details">
@@ -124,7 +112,7 @@ class Product {
                         </div>
                         
                         <div class="popup-actions">
-                            <a href="https://wa.me/123123123?text=Hi, I want to order: ${encodeURIComponent(this.name)} (ID: ${this.id}) - Price: ${this.formatPrice(this.calculateDiscountedPrice())}" 
+                            <a href="https://wa.me/123123123123?text=Hi, I want to order: ${encodeURIComponent(this.name)} (ID: ${this.id}) - Price: ${this.formatPrice(this.calculateDiscountedPrice())}" 
                                target="_blank" 
                                class="whatsapp-order-btn">
                                 <i class="whatsapp-icon">📱</i> Order via WhatsApp
@@ -137,7 +125,7 @@ class Product {
     }
 }
 
-// Main application
+// Main application with pagination
 class ShopApp {
     constructor() {
         this.products = [];
@@ -145,6 +133,12 @@ class ShopApp {
         this.filterContainer = document.getElementById('category-filter-container');
         this.pageTitle = document.getElementById('page-title');
         this.popupContainer = document.getElementById('popup-container');
+        this.paginationContainer = document.getElementById('pagination-container'); // Add this line
+
+        // Pagination properties
+        this.currentPage = 1;
+        this.productsPerPage = 24; // Adjust as needed
+        this.totalPages = 1;
 
         // Create popup container if it doesn't exist
         if (!this.popupContainer) {
@@ -167,10 +161,12 @@ class ShopApp {
             'Woman Accessories'
         ];
 
-        // Check URL parameters for category
+        // Check URL parameters for category and page
         const urlParams = new URLSearchParams(window.location.search);
         // Set default to first category
         this.currentCategory = urlParams.get('category') || this.fixedCategories[0];
+        // Get page from URL or default to 1
+        this.currentPage = parseInt(urlParams.get('page')) || 1;
 
         this.init();
     }
@@ -207,14 +203,14 @@ class ShopApp {
             const invalidCategories = this.products
                 .filter(p => !this.fixedCategories.includes(p.category))
                 .map(p => p.category);
-            
+
             if (invalidCategories.length > 0) {
                 console.warn('Some products have invalid categories:', invalidCategories);
             }
 
             // Use fixed categories as the source of truth
             this.categories = [...this.fixedCategories];
-            
+
             // Check if current category is valid
             if (!this.categories.includes(this.currentCategory)) {
                 this.currentCategory = this.categories[0];
@@ -235,6 +231,11 @@ class ShopApp {
         const url = new URL(window.location);
         if (this.currentCategory) {
             url.searchParams.set('category', this.currentCategory);
+        }
+        if (this.currentPage > 1) {
+            url.searchParams.set('page', this.currentPage);
+        } else {
+            url.searchParams.delete('page');
         }
         window.history.pushState({}, '', url);
     }
@@ -287,6 +288,7 @@ class ShopApp {
 
         // If we're not at the first category, go to previous category
         this.currentCategory = this.categories[prevIndex];
+        this.currentPage = 1; // Reset to page 1 when changing category
         this.updateCategoryNavigation();
     }
 
@@ -304,6 +306,7 @@ class ShopApp {
 
         // If we're not at the last category, go to next category
         this.currentCategory = this.categories[nextIndex];
+        this.currentPage = 1; // Reset to page 1 when changing category
         this.updateCategoryNavigation();
     }
 
@@ -364,21 +367,187 @@ class ShopApp {
 
         if (filteredProducts.length === 0) {
             this.container.innerHTML = `
-                <div class="no-products">
-                    <p>No products available in the "${this.currentCategory}" category</p>
-                    <p class="category-hint">Select another category from the dropdown above</p>
-                </div>
-            `;
+            <div class="no-products">
+                <p>No products available in the "${this.currentCategory}" category</p>
+                <p class="category-hint">Select another category from the dropdown above</p>
+            </div>
+        `;
+            // Clear pagination
+            if (this.paginationContainer) {
+                this.paginationContainer.innerHTML = '';
+            }
             return;
         }
 
-        // Clear container and add products
-        this.container.innerHTML = filteredProducts
+        // Calculate pagination
+        this.totalPages = Math.ceil(filteredProducts.length / this.productsPerPage);
+
+        // Ensure current page is valid
+        if (this.currentPage > this.totalPages) {
+            this.currentPage = this.totalPages;
+        }
+        if (this.currentPage < 1) {
+            this.currentPage = 1;
+        }
+
+        const startIndex = (this.currentPage - 1) * this.productsPerPage;
+        const endIndex = startIndex + this.productsPerPage;
+        const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+        // Clear only product container (not pagination)
+        this.container.innerHTML = paginatedProducts
             .map(product => product.createHTML())
             .join('');
 
+        // Add pagination controls to separate container
+        this.addPaginationControls(filteredProducts.length);
+
         this.addEventListeners();
         this.addImageHoverEffects();
+    }
+
+    addPaginationControls(totalProducts) {
+        const startProduct = ((this.currentPage - 1) * this.productsPerPage) + 1;
+        const endProduct = Math.min(this.currentPage * this.productsPerPage, totalProducts);
+
+        const paginationHTML = `
+        <div class="pagination-wrapper">
+            <div class="pagination-info">
+                Showing ${startProduct} - ${endProduct} of ${totalProducts} products
+            </div>
+            
+            <div class="pagination-controls">
+                <button class="pagination-btn ${this.currentPage === 1 ? 'disabled' : ''}" 
+                        id="prev-page" ${this.currentPage === 1 ? 'disabled' : ''}>
+                    ← Previous
+                </button>
+                
+                <div class="page-numbers">
+                    ${this.generatePageNumbers()}
+                </div>
+                
+                <button class="pagination-btn ${this.currentPage === this.totalPages ? 'disabled' : ''}" 
+                        id="next-page" ${this.currentPage === this.totalPages ? 'disabled' : ''}>
+                    Next →
+                </button>
+            </div>
+        </div>
+    `;
+
+        // Insert into the existing pagination container
+        if (this.paginationContainer) {
+            this.paginationContainer.innerHTML = paginationHTML;
+        } else {
+            // Fallback: insert at the end of shop container
+            this.container.insertAdjacentHTML('beforeend', paginationHTML);
+        }
+
+        // Add event listeners for pagination
+        this.addPaginationEventListeners();
+    }
+
+    generatePageNumbers() {
+        let pagesHTML = '';
+        const maxVisiblePages = 5; // Show maximum 5 page numbers
+
+        if (this.totalPages <= maxVisiblePages) {
+            // Show all pages
+            for (let i = 1; i <= this.totalPages; i++) {
+                pagesHTML += `
+                    <button class="page-number ${i === this.currentPage ? 'active' : ''}" 
+                            data-page="${i}">${i}</button>
+                `;
+            }
+        } else {
+            // Show with ellipsis
+            if (this.currentPage <= 3) {
+                // Show first 4 pages and last page
+                for (let i = 1; i <= 4; i++) {
+                    pagesHTML += `
+                        <button class="page-number ${i === this.currentPage ? 'active' : ''}" 
+                                data-page="${i}">${i}</button>
+                    `;
+                }
+                pagesHTML += `<span class="ellipsis">...</span>`;
+                pagesHTML += `
+                    <button class="page-number" data-page="${this.totalPages}">${this.totalPages}</button>
+                `;
+            } else if (this.currentPage >= this.totalPages - 2) {
+                // Show first page and last 4 pages
+                pagesHTML += `
+                    <button class="page-number" data-page="1">1</button>
+                    <span class="ellipsis">...</span>
+                `;
+                for (let i = this.totalPages - 3; i <= this.totalPages; i++) {
+                    pagesHTML += `
+                        <button class="page-number ${i === this.currentPage ? 'active' : ''}" 
+                                data-page="${i}">${i}</button>
+                    `;
+                }
+            } else {
+                // Show first, last, and current with neighbors
+                pagesHTML += `
+                    <button class="page-number" data-page="1">1</button>
+                    <span class="ellipsis">...</span>
+                    <button class="page-number" data-page="${this.currentPage - 1}">${this.currentPage - 1}</button>
+                    <button class="page-number active" data-page="${this.currentPage}">${this.currentPage}</button>
+                    <button class="page-number" data-page="${this.currentPage + 1}">${this.currentPage + 1}</button>
+                    <span class="ellipsis">...</span>
+                    <button class="page-number" data-page="${this.totalPages}">${this.totalPages}</button>
+                `;
+            }
+        }
+
+        return pagesHTML;
+    }
+
+    addPaginationEventListeners() {
+        // Previous page
+        const prevBtn = document.getElementById('prev-page');
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (this.currentPage > 1) {
+                    this.currentPage--;
+                    this.updateURL();
+                    this.displayProducts();
+                    this.scrollToTop();
+                }
+            });
+        }
+
+        // Next page
+        const nextBtn = document.getElementById('next-page');
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (this.currentPage < this.totalPages) {
+                    this.currentPage++;
+                    this.updateURL();
+                    this.displayProducts();
+                    this.scrollToTop();
+                }
+            });
+        }
+
+        // Page numbers
+        const pageNumbers = document.querySelectorAll('.page-number');
+        pageNumbers.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const page = parseInt(e.target.dataset.page);
+                if (page !== this.currentPage) {
+                    this.currentPage = page;
+                    this.updateURL();
+                    this.displayProducts();
+                    this.scrollToTop();
+                }
+            });
+        });
+    }
+
+    scrollToTop() {
+        window.scrollTo({
+            top: this.container.offsetTop - 100,
+            behavior: 'smooth'
+        });
     }
 
     addImageHoverEffects() {
