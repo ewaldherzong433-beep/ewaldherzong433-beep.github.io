@@ -58,9 +58,7 @@
                     <img src="Logo-main.png" alt="Sparkle Logo" class="logo-img">
                 </a>
                 <div class="mobile-header-icons">
-                    <a href="#contact" class="nav-link">
-                        <i class="fas fa-phone header-icon"></i>
-                    </a>
+
                 </div>
             </div>
         </div>
@@ -161,7 +159,7 @@
             <div class="swiper">
                 <div class="swiper-wrapper">
                     <!-- Card 1 -->
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" onclick="showProductPopup(1)">
                         <div class="trending-card">
                             <div class="card-img-container">
                                 <img src="/img/Highlight/high1.webp"
@@ -178,7 +176,7 @@
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" onclick="showProductPopup(1)">
                         <div class="trending-card">
                             <div class="card-img-container">
                                 <img src="/img/Highlight/high2.webp"
@@ -196,7 +194,7 @@
                     </div>
 
                     <!-- Card 3 -->
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" onclick="showProductPopup(1)">
                         <div class="trending-card">
                             <div class="card-img-container">
                                 <img src="/img/Highlight/high3.webp"
@@ -213,7 +211,7 @@
                         </div>
                     </div>
 
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" onclick="showProductPopup(1)">
                         <div class="trending-card">
                             <div class="card-img-container">
                                 <img src="/img/Highlight/high1.webp"
@@ -230,7 +228,7 @@
                         </div>
                     </div>
 
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" onclick="showProductPopup(1)">
                         <div class="trending-card">
                             <div class="card-img-container">
                                 <img src="/img/Highlight/high1.webp"
@@ -248,7 +246,7 @@
                     </div>
 
 
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" onclick="showProductPopup(1)">
                         <div class="trending-card">
                             <div class="card-img-container">
                                 <img src="/img/Highlight/high1.webp"
@@ -401,7 +399,6 @@
                         </div>
                     </a>
                 </div>
-                <a href="index.html"><button class="btn">Home</button></a>
             </div>
         </div>
         <span class="bg-text2 ">SPARKLE</span>
@@ -674,7 +671,6 @@
         const privacyModal = document.getElementById('privacy-modal');
         const privacyModalClose = document.getElementById('privacy-modal-close');
         const privacyModalOverlay = document.getElementById('privacy-modal-overlay');
-        const privacyAcceptBtn = document.getElementById('privacy-accept-btn');
 
         // Function to show privacy modal
         function showPrivacyModal() {
@@ -696,7 +692,6 @@
         // Event listeners for privacy modal
         privacyModalClose.addEventListener('click', closePrivacyModal);
         privacyModalOverlay.addEventListener('click', closePrivacyModal);
-        privacyAcceptBtn.addEventListener('click', closePrivacyModal);
 
         // Close with Escape key
         document.addEventListener('keydown', (e) => {
@@ -793,6 +788,7 @@
         setPopupEnabled(false);
 
     </script>
+    <script src="shop-popup.js"></script>
 
 </body>
 
