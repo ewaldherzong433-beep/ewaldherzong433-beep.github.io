@@ -19,6 +19,9 @@
         --discount-color: #e74c3c;
         --discount-bg: #ffebee;
     }
+    a{
+        text-decoration: none;
+    }
 
     html {
         scroll-behavior: smooth;
@@ -353,10 +356,17 @@
     .page-title {
         position: relative;
         font-size: large;
+
+    }
+
+    .page-title-prod {
+        display: table;
+        width: 100%;
+
     }
 
     .btn {
-        display: inline-block;
+
         background-color: var(--secondary-color);
         color: var(--primary-color-invert);
         padding: 10px 40px;
@@ -368,7 +378,13 @@
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        font-size: 3.3vw;
+        font-size: 2em;
+        display: table-cell;
+        vertical-align: middle;
+        line-height: 1;
+        height: 100%;
+
+
 
 
     }
@@ -389,11 +405,15 @@
         text-align: left;
         position: relative;
         scroll-margin-top: 400px;
-        display: flex;
-        justify-content: space-between;
 
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
         border: 1px solid red;
         /* Temporary to see boundaries */
+        display: table-cell;
+        vertical-align: middle;
+        text-align: right;
 
     }
 
@@ -403,7 +423,7 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         display: inline-flex;
-        align-items: center;
+        align-items: flex-start;
         position: relative;
         width: 100%;
         font-weight: normal;
@@ -1800,12 +1820,21 @@
     @media (max-width: 768px) {
         .contact-maps {
             flex-direction: column;
-            align-items: center;
+            gap: -15px;
+
         }
 
         .map-item {
             width: 90%;
             max-width: 100%;
+        }
+
+        .map-description h4 {
+            font-size: 1rem;
+        }
+
+        .map-description p {
+            font-size: 0.7rem;
         }
 
         .contact-info {
@@ -2707,6 +2736,10 @@
             margin-left: 2%;
             margin-right: 2%;
         }
+        .btn {
+            padding: 6px 25px;
+            font-size: 1.2em;
+        }
 
         .swiper-slide {
             width: 33.33%;
@@ -2748,6 +2781,11 @@
         .shop-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+        }
+
+        .btn {
+            padding: 6px 25px;
+            font-size: 1em;
         }
 
         .section-title h3 {
@@ -2848,6 +2886,12 @@
             justify-items: center;
         }
 
+        .btn {
+            padding: 3px 25px;
+            font-size: 0.8em;
+            margin-bottom: 3px;
+        }
+
         .product-card {
             padding: 0;
             width: 100px;
@@ -2917,6 +2961,15 @@
         .hero {
             padding-top: 14vh;
             padding-bottom: 14vh;
+        }
+
+        .btn {
+            padding: 6px 20px;
+            font-size: 0.5em;
+            padding-top: 5px;
+        }
+        .section-title h2{
+            font-size: 1em;
         }
 
         .swiper-button-next,
