@@ -28,10 +28,10 @@
             <!-- Desktop Header (shown on larger screens) -->
             <div class="header-container desktop-header">
                 <div class="header-nav">
-                    <a href="index.html#about-us-title" class="nav-link">About Us</a>
+                    <a href="#" class="nav-link" id="prev-category">Back</a>
                 </div>
                 <div class="header-nav">
-                    <a href="index.html#highlight" class="nav-link">Highlight</a>
+                    <!-- Empty for spacing -->
                 </div>
                 <div class="logo-container">
                     <a href="index.html" class="logo">
@@ -39,17 +39,10 @@
                     </a>
                 </div>
                 <div class="header-nav">
-                    <a href="index.html#shop" class="nav-link">Category</a>
+                    <!-- Empty for spacing -->
                 </div>
-                <!--
-                <div class="header-icons">
-                    <i class="fas fa-search header-icon"></i>
-                    <i class="fas fa-shopping-bag header-icon"></i>
-                    <i class="fas fa-user header-icon"></i>
-                </div>
-                -->
                 <div class="header-nav">
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link" id="next-category">Next Collection</a>
                 </div>
             </div>
 
@@ -87,8 +80,11 @@
     <section class="shopcon">
         <div class="container">
             <div class="section-title">
-                <h2 id="page-title">All Products</h2>
-                <a href="index.html"><button class="btn" href="index.html">Home</button></a>
+                <h2 id="page-title page-title-prod">All Products</h2>
+                <form action="index.html">
+                    <input class="btn" type="submit" value="Home" />
+                </form>
+                
             </div>
             <div id="category-filter-container" class="category-filter-container"></div>
             <div id="shop-container" class="shop-container"></div>
@@ -108,8 +104,7 @@
             <div class="bento-grid">
                 <div class="category-item">
                     <a href="products.html?category=Man Casual">
-                        <img src="/img/cat/mcasual.webp"
-                            alt="CASUAL" class="category-img">
+                        <img src="/img/cat/mcasual.webp" alt="CASUAL" class="category-img">
                         <div class="category-text">
                             <h3>CASUAL</h3>
                             <!--add <P> to detail-->
@@ -118,8 +113,7 @@
                 </div>
                 <div class="category-item">
                     <a href="products.html?category=Man Swimming Wear">
-                        <img src="/img/cat/mswiming.webp"
-                            alt="SWIMING WEAR" class="category-img">
+                        <img src="/img/cat/mswiming.webp" alt="SWIMING WEAR" class="category-img">
                         <div class="category-text">
                             <h3>SWIMING WEAR</h3>
                         </div>
@@ -127,8 +121,7 @@
                 </div>
                 <div class="category-item">
                     <a href="products.html?category=Man Sportswear">
-                        <img src="/img/cat/msport.webp"
-                            alt="sportwear" class="category-img">
+                        <img src="/img/cat/msport.webp" alt="sportwear" class="category-img">
                         <div class="category-text">
                             <h3>sportwear</h3>
                         </div>
@@ -136,8 +129,7 @@
                 </div>
                 <div class="category-item">
                     <a href="products.html?category=Man Bags">
-                        <img src="/img/cat/mbags.webp"
-                            alt="Bags" class="category-img">
+                        <img src="/img/cat/mbags.webp" alt="Bags" class="category-img">
                         <div class="category-text">
                             <h3>Bags</h3>
                         </div>
@@ -145,8 +137,7 @@
                 </div>
                 <div class="category-item">
                     <a href="products.html?category=Man Accessories">
-                        <img src="/img/cat/macc.webp"
-                            alt="accessories" class="category-img">
+                        <img src="/img/cat/macc.webp" alt="accessories" class="category-img">
                         <div class="category-text">
                             <h3>accessories</h3>
                         </div>
@@ -161,8 +152,7 @@
             <div class="bento-grid">
                 <div class="category-item">
                     <a href="products.html?category=Woman Casual">
-                        <img src="/img/cat/wcasual.webp"
-                            alt="Casual" class="category-img">
+                        <img src="/img/cat/wcasual.webp" alt="Casual" class="category-img">
                         <div class="category-text">
                             <h3>Casual</h3>
                         </div>
@@ -170,8 +160,7 @@
                 </div>
                 <div class="category-item">
                     <a href="products.html?category=Woman Swimming Wear">
-                        <img src="/img/cat/wswiming.webp"
-                            alt="Swimming wear" class="category-img">
+                        <img src="/img/cat/wswiming.webp" alt="Swimming wear" class="category-img">
                         <div class="category-text">
                             <h3>Swimming wear</h3>
                         </div>
@@ -179,8 +168,7 @@
                 </div>
                 <div class="category-item">
                     <a href="products.html?category=Woman Sportswear">
-                        <img src="/img/cat/wsport.webp"
-                            alt="Sportwear" class="category-img">
+                        <img src="/img/cat/wsport.webp" alt="Sportwear" class="category-img">
                         <div class="category-text">
                             <h3>Sportwear</h3>
                         </div>
@@ -188,8 +176,7 @@
                 </div>
                 <div class="category-item">
                     <a href="products.html?category=Woman Bags">
-                        <img src="/img/cat/wbags.webp"
-                            alt="Bags" class="category-img">
+                        <img src="/img/cat/wbags.webp" alt="Bags" class="category-img">
                         <div class="category-text">
                             <h3>Bags</h3>
                         </div>
@@ -197,8 +184,7 @@
                 </div>
                 <div class="category-item">
                     <a href="products.html?category=Woman Accessories">
-                        <img src="/img/cat/wacc.webp"
-                            alt="accessories" class="category-img">
+                        <img src="/img/cat/wacc.webp" alt="accessories" class="category-img">
                         <div class="category-text">
                             <h3>accessories</h3>
                         </div>
@@ -209,10 +195,10 @@
         </div>
         <span class="bg-text2 ">SPARKLE</span>
     </section>
-    
+
 
     <!-- Contact Us Section -->
-   <section class="contact" id="contact">
+    <section class="contact" id="contact">
         <div class="container">
             <div class="section-title invert line">
                 <h2>Contact Us</h2>
@@ -229,7 +215,7 @@
                         <div class="map-description">
                             <h4>SPARKLE SHOP Seminyak</h4>
                             <p>JI. Kunti I, Seminyak, Kec. Kuta, Kabupaten Badung,
-                            Bali 80361</p>
+                                Bali 80361</p>
                         </div>
                     </div>
                     <div class="map-item">
@@ -239,7 +225,7 @@
                         <div class="map-description">
                             <h4>SPARKLE SHOP Berawa</h4>
                             <p>JI. Pantai Berawa No.41, Tibubeneng, Kec. Kuta Utara,
-                            Kabupaten Badung, Bali 80361</p>
+                                Kabupaten Badung, Bali 80361</p>
                         </div>
                     </div>
                 </div>
@@ -275,7 +261,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
         <div class="container">
