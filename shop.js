@@ -112,7 +112,7 @@ class Product {
                         </div>
                         
                         <div class="popup-actions">
-                            <a href="https://wa.me/123123123123?text=Hi, I want to order: ${encodeURIComponent(this.name)} (ID: ${this.id}) - Price: ${this.formatPrice(this.calculateDiscountedPrice())}" 
+                            <a href="https://wa.me/6281228636230?text=Hi, I want to order: ${encodeURIComponent(this.name)} (ID: ${this.id}) - Price: ${this.formatPrice(this.calculateDiscountedPrice())}" 
                                target="_blank" 
                                class="whatsapp-order-btn">
                                 <i class="whatsapp-icon">📱</i> Order via WhatsApp
