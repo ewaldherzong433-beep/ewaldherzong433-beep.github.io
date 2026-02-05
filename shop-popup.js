@@ -108,7 +108,7 @@ class ProductPopup {
                         </div>
                         
                         <div class="popup-actions">
-                            <a href="https://wa.me/6282339807811?text=Hi, I want to order: ${encodeURIComponent(product.name)} (ID: ${product.id}) - Price: ${this.formatPrice(discountedPrice)}" 
+                            <a href="https://wa.me/6281228636230?text=Hi, I want to order: ${encodeURIComponent(product.name)} (ID: ${product.id}) - Price: ${this.formatPrice(discountedPrice)}" 
                                target="_blank" 
                                class="whatsapp-order-btn">
                                 <i class="whatsapp-icon">📱</i> Order via WhatsApp
@@ -262,4 +262,5 @@ class ProductPopup {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.productPopup = new ProductPopup();
+
 });
