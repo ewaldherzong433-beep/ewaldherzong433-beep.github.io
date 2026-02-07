@@ -33,6 +33,15 @@
         line-height: 1.6;
     }
 
+    html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
     .container {
         width: 100%;
         max-width: 1650px;
@@ -491,6 +500,7 @@
         opacity: 0.1;
         z-index: -1;
         pointer-events: none;
+        overflow: hidden;
     }
 
     .about-us {
@@ -598,7 +608,7 @@
     .card-img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         transition: transform 0.7s ease;
         will-change: transform;
     }
@@ -1741,6 +1751,7 @@
         width: 100%;
         max-width: 1200px;
         grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
     }
 
     .map-item {
@@ -1819,7 +1830,7 @@
     @media (max-width: 768px) {
         .contact-maps {
             flex-direction: column;
-            gap: -15px;
+            gap: 2px;
 
         }
 
@@ -1837,7 +1848,7 @@
         }
 
         .contact-info {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(1, 1fr);
         }
 
         .contact-container {
@@ -2978,12 +2989,6 @@
 
         .trending-card {
             margin: 0 5px;
-        }
-
-        .btn:hover {
-            display: none;
-            visibility: hidden;
-            transform: scale(0);
         }
 
         .product-card:has(.discount-badge)::before {

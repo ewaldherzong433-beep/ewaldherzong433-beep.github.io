@@ -115,7 +115,7 @@ class Product {
                             <a href="https://wa.me/6281228636230?text=Hi, I want to order: ${encodeURIComponent(this.name)} (ID: ${this.id}) - Price: ${this.formatPrice(this.calculateDiscountedPrice())}" 
                                target="_blank" 
                                class="whatsapp-order-btn">
-                                <i class="whatsapp-icon">📱</i> Order via WhatsApp
+                                <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
                             </a>
                         </div>
                     </div>
@@ -216,7 +216,7 @@ class ShopApp {
                 this.currentCategory = this.categories[0];
             }
 
-            this.createCategoryFilter();
+            //this.createCategoryFilter();
             return true;
         } catch (error) {
             console.error('Error loading products:', error);

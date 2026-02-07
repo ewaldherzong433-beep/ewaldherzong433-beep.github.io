@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>SPARKLE SHOP</title>
     <link rel="icon" href="Icon_sprkl.png" type="image/png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +57,8 @@
                     <img src="Logo-main.png" alt="Sparkle Logo" class="logo-img">
                 </a>
                 <div class="mobile-header-icons">
-                    <i class="fas fa-bars header-icon hidden"></i>
+                    <i class="fas fa-bars header-icon hidden"><a href="#" class="nav-link" id="next-category">Next
+                            Collection</a></i>
                 </div>
             </div>
         </div>
@@ -81,11 +83,8 @@
     <section class="shopcon">
         <div class="container">
             <div class="section-title">
-                <h2 id="page-title page-title-prod">All Products</h2>
-                <form action="index.html">
-                    <input class="btn" type="submit" value="Home" />
-                </form>
-                
+                <h2 id="page-title">All Products</h2>
+                <a href="index.html" class="btn">Home</a>
             </div>
             <div id="category-filter-container" class="category-filter-container"></div>
             <div id="shop-container" class="shop-container"></div>
@@ -232,15 +231,20 @@
                 </div>
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Facebook</h4>
-                            <p>Sparkle Shop</p>
-                        </div>
+                        <a href="https://www.facebook.com/profile.php?id=100084114227911" style="display: flex;
+        align-items: flex-start;">
+                            <div class="contact-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Facebook</h4>
+                                <p>Sparkle Shop</p>
+                            </div>
+                        </a>
                     </div>
                     <div class="contact-item">
+                        <a href="#" style="display: flex;
+        align-items: flex-start;">
                         <div class="contact-icon">
                             <i class="fab fa-instagram"></i>
                         </div>
@@ -248,15 +252,19 @@
                             <h4>Instagram</h4>
                             <p>@SparkleShop<br>Follow us for latest trends</p>
                         </div>
+                        </a>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>WhatsApp</h4>
-                            <p>+62 8122 863 6230<br>Chat to order our products</p>
-                        </div>
+                        <a href="https://wa.me/6281228636230" style="display: flex;
+        align-items: flex-start;">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>WhatsApp</h4>
+                                <p>+62 8122 8636 230<br>Chat to order our products</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
